@@ -1,0 +1,36 @@
+$breakpoints : (
+    sm : 640px,
+    md : 768px,
+    lg : 1024px,
+    xl : 1280px
+);
+
+$types : (
+    max : max-width,
+    min : min-width
+);
+
+@mixin breakpoint($user-value-type, $user-value-width){
+    $width : map-get($breakpoints, $user-value-width);
+    $type : map-get($types, $user-value-type);
+    @if $width{
+        @media ( $type : #{$width}){
+            @content;
+        }
+    }@else{
+        @error "something typed doesn't match the data pre-defined."
+    }
+};
+
+/* 
+    to add this mixin into a file use:
+        @use '../abstract/' as *;
+
+    to  use the mixin :
+        @include breakpoint(min,sm){
+
+        };
+
+    first argument: min = min-width, max = max-width
+    seconde argument : width
+*/

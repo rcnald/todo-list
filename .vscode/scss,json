@@ -1,0 +1,82 @@
+{
+	"component name": {
+		"prefix": "component",
+		"body": [
+		  "\\$component-name: 'c-';",
+		  "",
+		  "\\$layout-name: 'l-';",
+		  "",
+		  ".#{\\$component-name}{",
+		  "",
+		  "}",
+		  "",
+		  ".#{\\$layout-name}{",
+		  "",
+		  "}"
+		],
+		"description": "component name"
+	  },
+
+	  "layout name": {
+		"prefix": "layout",
+		"body": [
+		  "\\$layout-name: 'l-';",
+		  "",
+		  ".#{\\$layout-name}{",
+		  "",
+		  "}"
+		],
+		"description": "only layout name"
+	  },
+
+	  "object name": {
+		"prefix": "object",
+		"body": [
+			"\\$object-name: 'o-';",
+			"",
+			"\\$layout-name: 'l-';",
+			"",
+			".#{\\$object-name}{",
+			"",
+			"}",
+			"",
+			".#{\\$layout-name}{",
+			"",
+			"}"
+		],
+		"description": "object name"
+	  },
+
+	  "use breakpoint": {
+		"prefix": "use breakpoint",
+		"body": [
+		  "@use '../abstract/' as *;"
+		],
+		"description": "use breakpoint"
+	  },
+
+	  "import index": {
+		"prefix": "import index",
+		"body": [
+		  "@use '' as *;"
+		],
+		"description": "import index"
+	  },
+
+	  "include breakpoint": {
+		"prefix": "include breakpoint",
+		"body": [
+		  "@include breakpoint(min,sm){",
+		  "   @apply ;",
+		  "};"
+		],
+		"description": "include breakpoint"
+	  },
+	  "var": {
+		"prefix": "var",
+		"body": [
+		  "var()"
+		],
+		"description": "var"
+	  }
+}
