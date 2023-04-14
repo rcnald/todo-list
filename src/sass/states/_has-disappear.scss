@@ -1,0 +1,19 @@
+@keyframes has-disappear  {
+    0%{
+        opacity: 100%;
+        width: 100%;
+    }
+    30%{
+        opacity: 0%;
+        width: 0%;
+    } 
+    
+    100%{
+        opacity: 0%;
+        width: 0%;
+    }
+}
+
+.has-disappear{
+    animation: has-disappear 1.2s 1s 2 ease-in alternate;
+}

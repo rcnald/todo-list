@@ -1,0 +1,10 @@
+$component-name: 'c-main';
+$layout-name: 'l-';
+
+.#{$component-name}{
+    @apply w-full max-w-[500px];
+}
+
+.#{$layout-name}{
+
+}

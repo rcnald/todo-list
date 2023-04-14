@@ -1,0 +1,7 @@
+.icon-animation{
+    animation: 
+        is-shaking 500ms 1.7s 2 ease-in alternate forwards,
+        has-shown 1.2s 1s 2 ease-in alternate
+    ;
+    transform: translateX(0px);
+}

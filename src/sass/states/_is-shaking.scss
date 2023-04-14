@@ -1,0 +1,13 @@
+@keyframes is-shaking {
+    from{
+        transform: rotate(0deg)
+    }
+    
+    50%{
+        transform: rotate(-20deg);
+    }
+    
+    to{
+        transform: rotate(20deg);
+    }
+}

@@ -4,11 +4,39 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="shortcut icon" href="./assets/favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="css/main.css">
-        <title>Project Template</title>
+        <title>to-do list</title>
     </head>
-    <body>
-
+    <body class="c-body l-body">
+        <main class="c-main">
+            <section class="c-card l-card">
+                <div class="c-card__header">
+                    <picture width="100px">
+                        <source width="100px" media="(min-width:400px)" srcset="./assets/logo.svg">
+                        <img>
+                    </picture>
+                    <h1 class="c-card__title">To-do List</h1>
+                </div>
+                <form class="c-card__add-item l-card__add-item js-add" action="#">
+                    <input class="c-card__input l-card__input" type="text" placeholder="Adicionar tarefa">
+                    <button class="c-card__button l-card__button c-card__button--add js-add-button" type="submit">
+                        <i class="c-card__add-icon l-card__add-icon bx bx-list-plus js-button-icon"></i>
+                        <span class="c-card__name l-card__name c-card__name--button  l-card__name--button js-button-name">Adicionar</span>
+                    </button>
+                </form>
+                <!-- <div class="c-card__list js-list">
+                    <div class="c-card__item js-item">
+                        <i class="c-card__check js-item-check bx bx-checkbox"></i>
+                        <p class="c-card__name">Nome da tarefa</p>
+                        <button class="c-card__button l-card__button c-card__button--edit">Editar</button>
+                        <button class="c-card__button l-card__button c-card__button--delete">Excluir</button>
+                    </div>
+                </div> -->
+            </section>
+        </main>
     </body>
     <script src="js/main.js"></script>
 </html>

@@ -1,0 +1,103 @@
+$component-name: 'c-card';
+$layout-name: 'l-card';
+
+.#{$component-name}{
+    @apply bg-white p-10;
+
+    &__header{
+        @apply flex items-center;
+    }
+
+    &__title{
+        @apply text-[60px];
+    }
+
+    &__add-item{
+        @apply flex gap-3;
+    }
+
+    &__add-icon{
+        @apply text-xl transition-all duration-200 opacity-0;
+    }
+
+    &__item{
+        @apply flex;
+    }
+
+    &__input{
+        @apply bg-input-color p-xs rounded-xs text-text-color;
+
+        &:hover,
+        &:focus{
+            @apply outline outline-1 outline-outline-color; 
+        }
+    }
+
+    &__name{
+        &--button{
+            transition: all 200ms;
+            transform-origin: left;
+        }
+    }
+
+    &__button{
+        @apply flex items-center justify-center gap-1 w-fit bg-main-color text-white p-xs rounded-xs font-bold text-xs transition-all duration-300;
+        box-shadow: 0px 5px 0px 0px var(--accent-color);
+
+        &--add{
+            &:active{
+                @apply bg-green-500 transition-all duration-[1s];
+            }
+
+            &:hover{
+                .#{$component-name}__add-icon{
+                    @apply opacity-100
+                }
+            }
+        }
+
+    }
+}
+
+.#{$layout-name}{
+    @apply w-full max-w-[500px];
+
+    &__add-item{
+        @apply h-[2.5rem];
+    }
+    
+    &__add-icon{
+        transform: translateX(20px);
+    }
+
+    &__name{
+        &--button{
+            transform: translateX(-10px)
+        }
+    }
+
+    &__input{
+        @apply min-w-[150px] w-full;
+    }
+
+    &__button{
+        @apply h-[2.1875rem] max-w-[120px] w-full;
+
+
+        &:hover{
+            .#{$layout-name}__add-icon{
+                transform: translateX(0px)
+            }
+
+            .#{$layout-name}__name--button{
+                transform: translateX(0px)
+            }
+        }
+
+        &:active{
+            @apply transition-all duration-100;
+            box-shadow: 0px 0px 0px 0px;
+            translate: 0 5px;
+        }
+    }
+}
