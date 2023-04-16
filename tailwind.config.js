@@ -20,10 +20,14 @@ module.exports = {
       },
       spacing:{
         'xs':'var(--pd-xs)',
+        'xxs':'var(--pd-xxs)',
         'pd-button':'var(--pd-button)',
       },
       borderRadius:{
         'xs':'0.3125rem',
+      },
+      maxWidth:{
+        'md':'var(--mw-md)',
       },
     },
   },

@@ -1,0 +1,78 @@
+$object-name: 'o-button';
+$layout-name: 'l-button';
+
+.#{$object-name}{
+    @apply flex items-center justify-center gap-1 w-fit bg-main-color text-white p-xs rounded-xs font-bold text-xs transition-all duration-300 overflow-hidden;
+
+    &:hover{
+        @apply scale-105;
+    }
+
+    &--add{
+        &:active{
+            @apply bg-green-500 transition-all duration-[1s];
+        }
+
+        &:hover,
+        &:focus{
+            @apply scale-100;
+            
+            .#{$object-name}__icon{
+                @apply opacity-100;
+            }
+        }
+    }
+
+    &--cancel{
+        @apply bg-transparent text-main-color border-2 border-main-color;
+    }
+
+    &__icon{
+        @apply text-xl transition-all duration-200 opacity-0;
+    }
+
+    &__name{
+        transition: all 200ms;
+        transform-origin: left;
+    }
+}
+
+.#{$layout-name}{
+    @apply h-[2.1875rem] max-w-[120px] w-full;
+    box-shadow: 0px 5px 0px 0px var(--accent-color);
+
+    &--cancel{
+        @apply max-w-none w-fit;
+        box-shadow: 0px 0px 0px 0px transparent;
+    }
+
+    &--save{
+        @apply max-w-none w-fit;
+        box-shadow: 0px 0px 0px 0px transparent;
+    }
+
+    &:hover,
+    &:focus{
+        .#{$layout-name}__icon{
+            transform: translateX(0px)
+        }
+
+        .#{$layout-name}__name{
+            transform: translateX(0px)
+        }
+    }
+
+    &:active{
+        @apply transition-all duration-100;
+        box-shadow: 0px 0px 0px 0px;
+        translate: 0 5px;
+    }
+
+    &__icon{
+        transform: translateX(20px);
+    }
+
+    &__name{
+        transform: translateX(-10px);
+    }
+}

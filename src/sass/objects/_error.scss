@@ -1,0 +1,18 @@
+$object-name: 'o-error';
+$layout-name: 'l-error';
+
+.#{$object-name}{
+    @apply flex items-center justify-between rounded-md p-5 gap-5 bg-red-100 border border-red-200;
+
+    &__icon{
+        @apply text-red-500 text-3xl
+    }
+
+    &__message{
+        @apply font-medium;
+    }
+}
+
+.#{$layout-name}{
+    @apply fixed hidden;
+}

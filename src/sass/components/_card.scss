@@ -2,30 +2,34 @@ $component-name: 'c-card';
 $layout-name: 'l-card';
 
 .#{$component-name}{
-    @apply bg-white p-10;
+    @apply flex flex-col gap-3 bg-white p-10 rounded-md;
 
     &__header{
         @apply flex items-center;
     }
 
     &__title{
-        @apply text-[60px];
+        @apply text-[60px] font-bold leading-[1];
     }
 
-    &__add-item{
+    &__container{
         @apply flex gap-3;
     }
 
-    &__add-icon{
-        @apply text-xl transition-all duration-200 opacity-0;
-    }
-
     &__item{
-        @apply flex;
+        @apply flex items-center justify-between p-4 rounded-xl gap-4 bg-slate-100;
+
+        &:hover{
+            @apply bg-gray-200;
+        }
     }
 
     &__input{
         @apply bg-input-color p-xs rounded-xs text-text-color;
+
+        &--modal{
+            @apply p-xxs
+        }
 
         &:hover,
         &:focus{
@@ -34,70 +38,83 @@ $layout-name: 'l-card';
     }
 
     &__name{
-        &--button{
-            transition: all 200ms;
-            transform-origin: left;
+        @apply text-text-color mr-auto;
+    }
+
+    &__check{
+        @apply appearance-none cursor-pointer text-2xl transition-all;
+
+        &::before{
+            content: '\ea42';
+        }
+
+        &:checked{
+            @apply text-main-color;
+
+            &::before{
+                content: '\ed2f'
+            }
         }
     }
 
     &__button{
-        @apply flex items-center justify-center gap-1 w-fit bg-main-color text-white p-xs rounded-xs font-bold text-xs transition-all duration-300;
-        box-shadow: 0px 5px 0px 0px var(--accent-color);
+        @apply transition-all duration-200 text-gray-600 flex;
 
-        &--add{
-            &:active{
-                @apply bg-green-500 transition-all duration-[1s];
-            }
+        &:hover{
+            @apply scale-110;
+        }
 
+        &--edit{
             &:hover{
-                .#{$component-name}__add-icon{
-                    @apply opacity-100
-                }
+                @apply text-main-color;
             }
         }
 
+        &--delete{
+            &:hover{
+                @apply text-red-600;
+            }
+        }
+    }
+
+    &__modal{
+        @apply flex-col gap-3 rounded-md;
+        box-shadow: 0px 0px 11px 1px rgba(145,140,145,0.75);
+
+        &[open]{
+            @apply flex;
+        }
+
+        &::backdrop{
+            background: rgba(8, 8, 8, .5);
+        }
+    }
+
+    &__wrapper{
+        @apply flex gap-2;
+
+        &--modal{
+            @apply flex-col gap-1;
+        }
     }
 }
 
 .#{$layout-name}{
-    @apply w-full max-w-[500px];
-
-    &__add-item{
+    &__container{
         @apply h-[2.5rem];
-    }
-    
-    &__add-icon{
-        transform: translateX(20px);
-    }
-
-    &__name{
-        &--button{
-            transform: translateX(-10px)
-        }
     }
 
     &__input{
         @apply min-w-[150px] w-full;
     }
 
-    &__button{
-        @apply h-[2.1875rem] max-w-[120px] w-full;
+    // &__wrapper{
+    //     &--modal{
+    //         @apply max-w-none w-fit
+    //     }
+    // }
 
-
-        &:hover{
-            .#{$layout-name}__add-icon{
-                transform: translateX(0px)
-            }
-
-            .#{$layout-name}__name--button{
-                transform: translateX(0px)
-            }
-        }
-
-        &:active{
-            @apply transition-all duration-100;
-            box-shadow: 0px 0px 0px 0px;
-            translate: 0 5px;
-        }
-    }
+    // &__modal{
+    //     @apply w-full fixed;
+    // }
 }

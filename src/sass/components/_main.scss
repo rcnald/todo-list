@@ -2,7 +2,7 @@ $component-name: 'c-main';
 $layout-name: 'l-';
 
 .#{$component-name}{
-    @apply w-full max-w-[500px];
+    @apply flex flex-col gap-5
 }
 
 .#{$layout-name}{
