@@ -10,11 +10,14 @@
         <link rel="stylesheet" href="css/main.css">
         <title>to-do list</title>
     </head>
-    <body class="c-body l-body">
-        <div class="o-error l-error l-wrapper">
-            <i class="o-error__icon bx bxs-error-circle"></i>
-            <p class="o-error__message">Você não pode adicionar uma tarefa vazia.</p>
-        </div>
+    <body class="c-body l-body js-body">
+        <!-- <div class="o-error l-error l-error__wrapper">
+            <div class="o-error__wrapper l-error__wrapper">
+                <i class="o-error__icon bx bxs-error-circle"></i>
+                <p class="o-error__message">Você não pode adicionar uma tarefa vazia.</p>
+            </div>
+            <div class="o-error__loading l-error__loading"></div>
+        </div> -->
 
         <main class="c-main l-wrapper">
             <section class="c-card l-card">
@@ -23,24 +26,24 @@
                 </div>
 
                 <form class="c-card__container l-card__container js-add" action="#">
-                    <input class="c-card__input l-card__input" type="text" placeholder="Nova tarefa">
-                    <button class="o-button o-button--add l-button js-add-item" type="submit">
+                    <input class="c-card__input l-card__input js-item-input" type="text" placeholder="Nova tarefa">
+                    <button class="o-button o-button--add l-button l-button--add js-add-item" type="submit">
                         <i class="o-button__icon l-button__icon bx bx-list-plus js-button-icon"></i>
                         <span class="o-button__name l-button__name js-button-name">Adicionar</span>
                     </button>
                 </form>
             </section>
 
-            <section class="c-card l-card">
+            <section class="c-card l-card js-event-listener">
                 <ul class="c-card__list js-list">
                     <li class="c-card__item js-item">
-                        <input class="c-card__check js-check-item bx" type="checkbox">
+                        <i class="c-card__check js-check-item bx bx-checkbox" data-action="check"></i>
                         <span class="c-card__name">Nome da tarefa</span>
-                        <button class="c-card__button c-card__button--edit js-edit-item" title="Editar">
+                        <button class="c-card__button c-card__button--edit js-edit-item" title="Editar"  data-action="edit">
                             <i class="bx bxs-edit"></i>
                             <span class="sr-only">Editar</span>
                         </button>
-                        <button class="c-card__button c-card__button--delete js-delete-item" title="Excluir">
+                        <button class="c-card__button c-card__button--delete js-delete-item" title="Excluir" data-action="delete">
                             <i class="bx bxs-trash"></i>
                             <span class="sr-only">Excluir</span>
                         </button>
@@ -48,15 +51,22 @@
                         <dialog class="c-card__modal l-card__modal js-edit">
                             <div class="c-card__wrapper c-card__wrapper--modal">
                                 <label class="c-card__name">Novo nome</label>
-                                <input class="c-card__input c-card__input--modal" type="text">
+                                <input class="c-card__input c-card__input--modal js-edit-input" type="text">
                             </div>
                             <div class="l-wrapper c-card__wrapper">
-                                <button class="o-button o-button--cancel l-button l-button--cancel js-edit-cancel" data-action="cancel">Cancelar</button>
-                                <button class="o-button l-button l-button--save js-add-item" data-action="save">Salvar e Aplicar</button>
+                                <button class="o-button o-button--cancel l-button js-edit-cancel" data-action="cancel">Cancelar</button>
+                                <button class="o-button l-button l-button--save js-edit-save" data-action="save">Salvar e Aplicar</button>
                             </div>
                         </dialog>
                     </li>
                 </ul>
+
+                <div class="l-wrapper l-wrapper--flex-jb-ic">
+                    <span class="o-pendencies js-pendencies">Você não tem tarefas pendentes</span>
+                    <button class="o-button l-button js-clear-tasks">
+                        <span>Limpar</span>
+                    </button>
+                </div>
             </section>
         </main>
     </body>

@@ -38,17 +38,11 @@ $layout-name: 'l-button';
 }
 
 .#{$layout-name}{
-    @apply h-[2.1875rem] max-w-[120px] w-full;
-    box-shadow: 0px 5px 0px 0px var(--accent-color);
+    @apply h-[2.1875rem] max-w-none w-fit;
 
-    &--cancel{
-        @apply max-w-none w-fit;
-        box-shadow: 0px 0px 0px 0px transparent;
-    }
-
-    &--save{
-        @apply max-w-none w-fit;
-        box-shadow: 0px 0px 0px 0px transparent;
+    &--add{
+        @apply max-w-[120px] w-full;
+        box-shadow: 0px 5px 0px 0px var(--accent-color);
     }
 
     &:hover,

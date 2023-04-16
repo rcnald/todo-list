@@ -1,12 +1,26 @@
-@keyframes has-shown  {
-    0%{
-        opacity: 0%;
+@keyframes has-shown {
+    10%{
+        rotate: x 0deg;
+        transform: translateY(0%);
     }
-    30%{
-        opacity: 100%;
-    } 
-    
+    40%{
+        rotate: x 0deg;
+        transform: translateY(0%);
+    }
+    50%{
+        rotate: x 0deg;
+        transform: translateY(0%);
+    }
+    70%{
+        rotate: x 0deg;
+        transform: translateY(0%);
+    }
     100%{
-        opacity: 100%;
+        rotate: x 0deg;
+        transform: translateY(0%);
     }
+}
+
+.has-shown{
+    animation: has-shown 2s .1s ease-in-out 2 forwards alternate;
 }

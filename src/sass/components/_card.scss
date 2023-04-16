@@ -17,10 +17,10 @@ $layout-name: 'l-card';
     }
 
     &__item{
-        @apply flex items-center justify-between p-4 rounded-xl gap-4 bg-slate-100;
+        @apply flex items-center justify-between p-4 rounded-xl gap-4;
 
         &:hover{
-            @apply bg-gray-200;
+            @apply bg-gray-200 cursor-pointer;
         }
     }
 
@@ -44,21 +44,21 @@ $layout-name: 'l-card';
     &__check{
         @apply appearance-none cursor-pointer text-2xl transition-all;
 
-        &::before{
-            content: '\ea42';
-        }
-
-        &:checked{
+        &[class~="bxs-checkbox-checked"]{
             @apply text-main-color;
 
-            &::before{
-                content: '\ed2f'
+            & ~ .#{$component-name}__name{
+                @apply line-through;
             }
         }
     }
 
     &__button{
         @apply transition-all duration-200 text-gray-600 flex;
+
+        & > *{
+            @apply pointer-events-none
+        }
 
         &:hover{
             @apply scale-110;
@@ -107,14 +107,4 @@ $layout-name: 'l-card';
     &__input{
         @apply min-w-[150px] w-full;
     }
-
-    // &__wrapper{
-    //     &--modal{
-    //         @apply max-w-none w-fit
-    //     }
-    // }
-
-    // &__modal{
-    //     @apply w-full fixed;
-    // }
 }

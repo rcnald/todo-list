@@ -2,4 +2,8 @@ $layout-name: 'l-wrapper';
 
 .#{$layout-name}{
     @apply w-full max-w-md;
+
+    &--flex-jb-ic{
+        @apply flex justify-between items-center
+    }
 }
