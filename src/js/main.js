@@ -16,21 +16,42 @@ function Task(name, completed) {
 
 let tasks = []
 
-function generateErrorMessage(message){
+function generateErrorMessage(errorType){
+    const errorStyle = {
+        empty : {
+            background : "o-error--error",
+            icon : "bxs-error-circle",
+            iconColor : "o-error__icon--error",
+            message : "Você não pode adicionar uma tarefa vazia."
+        },
+        warning : {
+            background : "o-error--warning",
+            icon : "bxs-error",
+            iconColor : "o-error__icon--warning",
+            message : ""
+        },
+        sucess : {
+            background : "o-error--sucess",
+            icon : "bxs-error",
+            iconColor : "o-error__icon--sucessg",
+            message : ""
+        },
+    }
+
     if(document.querySelector('.o-error')) return 
 
     const error = document.createElement('div')
-    error.className = "o-error l-error l-error__wrapper has-shown"
+    error.className = `o-error ${errorStyle[errorType].background} l-error l-error__wrapper has-shown`
 
     const errorWrapper = document.createElement('div')
     errorWrapper.className = "o-error__wrapper l-error__wrapper"
 
     const errorIcon = document.createElement('i')
-    errorIcon.className = "o-error__icon bx bxs-error-circle"
+    errorIcon.className = `o-error__icon ${errorStyle[errorType].iconColor} bx ${errorStyle[errorType].icon}`
 
     const errorMessage = document.createElement('p')
     errorMessage.className = "o-error__message"
-    errorMessage.textContent = message
+    errorMessage.textContent = `${errorStyle[errorType].message}`
 
     const errorLoading = document.createElement('div')
     errorLoading.className = "o-error__loading l-error__loading"
@@ -171,7 +192,7 @@ addItemContainer.addEventListener('submit', function(e){
         itemInput.value = ""
         itemInput.focus()
     }else{
-        const error = generateErrorMessage("Você não pode adicionar uma tarefa vazia.")
+        const error = generateErrorMessage('empty')
 
         function removeErrorMessage(){
             error.remove()

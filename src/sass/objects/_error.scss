@@ -2,10 +2,35 @@ $object-name: 'o-error';
 $layout-name: 'l-error';
 
 .#{$object-name}{
-    @apply flex flex-col rounded-md bg-red-100 border border-red-200 overflow-hidden transition-all duration-300;
+    @apply flex flex-col rounded-md border overflow-hidden transition-all duration-300;
+
+    &--error{
+        @apply bg-red-100 border-red-200
+    }
+
+    &--warning{
+        @apply bg-amber-100 border-amber-200
+
+    }
+
+    &--sucess{
+
+    }
 
     &__icon{
-        @apply text-red-500 text-3xl
+        @apply text-3xl;
+
+        &--error{
+            @apply text-red-400;
+        }
+
+        &--warning{
+            @apply text-amber-400;
+        }
+
+        &--sucess{
+
+        }
     }
 
     &__message{
@@ -13,7 +38,7 @@ $layout-name: 'l-error';
     }
 
     &__wrapper{
-        @apply flex items-center p-5;
+        @apply flex items-center gap-4 p-5;
     }
 
     &__loading{
@@ -27,8 +52,8 @@ $layout-name: 'l-error';
 
 .#{$layout-name}{
     @apply fixed origin-top top-[20px];
-    transform: translateY(-50px);
-    rotate: x -90deg;
+    // transform: translateY(-50px);
+    // rotate: x -90deg;
 
     &__wrapper{
         @apply w-full max-w-[500px]
