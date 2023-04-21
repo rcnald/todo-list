@@ -243,16 +243,22 @@ function buttonAnimation (){
 addItemContainer.addEventListener('submit', function(e){
     if(itemInput.value){
         addTask(itemInput.value)
-        buttonAnimation()
-        renderTasks()
         itemInput.value = ""
-        itemInput.focus()
+        buttonAnimation()
         callError('green', 'Tarefa adicionada com sucesso!')
+        renderTasks()
     }else{
         addItem.blur()
+        itemInput.classList.add('is-shaking')
+        itemInput.classList.add('c-card__input--invalid')
+
+        setTimeout(() => {
+            itemInput.classList.remove('is-shaking')
+            itemInput.classList.remove('c-card__input--invalid')
+        }, 500)
         callError('red', 'Você não pode adicionar uma tarefa vazia!')
     }
-
+    itemInput.focus()
     e.preventDefault()
 })
 
@@ -281,20 +287,6 @@ ItemContainer.addEventListener('click', e => {
             currentEditModal.close()
         },
         save : function () {
-            const currentEditSave = currentItem.getElementsByClassName('js-edit-save')[0]
-
-            if(!currentEditInput.value){
-                // callError('red', 'Você não pode salvar uma tarefa vazia!')
-
-                // return
-            }
-
-            if(tasks[currentItemIndex].name === currentEditInput.value) {
-                // callError('yellow', 'Não houveram alterações na tarefa!')
-
-                // return
-            }
-
             tasks[currentItemIndex].name = currentEditInput.value
             callError('green', 'Tarefa editada com sucesso!')
         },

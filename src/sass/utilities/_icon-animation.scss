@@ -1,6 +1,6 @@
 .icon-animation{
     animation: 
-        is-shaking 500ms 1.7s 2 ease-in alternate forwards,
+        is-rotating 500ms 1.7s 2 ease-in alternate forwards,
         fade-in 1.2s 1s 2 ease-in alternate
     ;
     transform: translateX(0px);

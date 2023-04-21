@@ -25,16 +25,31 @@ $layout-name: 'l-card';
     }
 
     &__input{
-        @apply bg-input-color p-xs rounded-xs text-text-color;
-
-        &--modal{
-            @apply p-xxs
-        }
-
+        @apply bg-input-color p-xs rounded-xs text-text-color transition-all duration-100;
+        
         &:hover,
         &:focus{
             @apply outline outline-1 outline-outline-color; 
         }
+
+        &--invalid{
+            @apply outline outline-2 outline-red-400 transition-all duration-100;
+
+            &:hover,
+            &:focus{
+                @apply outline outline-2 outline-red-400 caret-red-400 transition-all duration-100; 
+            }
+
+            &::placeholder{
+                @apply text-red-400;
+            }
+
+        }
+
+        &--modal{
+            @apply p-xxs
+        }
+        
     }
 
     &__name{

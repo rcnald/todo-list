@@ -1,13 +1,17 @@
 @keyframes is-shaking {
     from{
-        transform: rotate(0deg)
+        transform: translateX(5px);
     }
-    
+
     50%{
-        transform: rotate(-20deg);
+        transform: translateX(0px);
     }
-    
+
     to{
-        transform: rotate(20deg);
+        transform: translateX(-5px);
     }
+}
+
+.is-shaking{
+    animation: is-shaking 100ms 3 ease-in-out alternate;
 }
