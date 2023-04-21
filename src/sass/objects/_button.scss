@@ -25,6 +25,10 @@ $layout-name: 'l-button';
 
     &--cancel{
         @apply bg-transparent text-main-color border-2 border-main-color;
+
+        &:hover{
+            @apply border-red-400 text-red-400;
+        }
     }
 
     &__icon{

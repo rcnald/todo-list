@@ -16,29 +16,28 @@ function Task(name, completed) {
 
 let tasks = []
 
-function generateErrorMessage(errorType){
+function generateErrorMessage(errorType, errorMessages){
     const errorStyle = {
-        empty : {
-            background : "o-error--error",
+        red : {
+            background : "o-error--red",
             icon : "bxs-error-circle",
-            iconColor : "o-error__icon--error",
-            message : "Você não pode adicionar uma tarefa vazia."
+            iconColor : "o-error__icon--red",
         },
-        warning : {
-            background : "o-error--warning",
+        yellow : {
+            background : "o-error--yellow",
             icon : "bxs-error",
-            iconColor : "o-error__icon--warning",
-            message : ""
+            iconColor : "o-error__icon--yellow",
         },
-        sucess : {
-            background : "o-error--sucess",
-            icon : "bxs-error",
-            iconColor : "o-error__icon--sucessg",
-            message : ""
+        green : {
+            background : "o-error--green",
+            icon : "bxs-check-circle",
+            iconColor : "o-error__icon--green",
         },
     }
 
-    if(document.querySelector('.o-error')) return 
+    const exists = document.querySelector(`.${errorStyle[errorType].background}`)
+
+    if(exists && exists.textContent === errorMessages) return 
 
     const error = document.createElement('div')
     error.className = `o-error ${errorStyle[errorType].background} l-error l-error__wrapper has-shown`
@@ -51,7 +50,7 @@ function generateErrorMessage(errorType){
 
     const errorMessage = document.createElement('p')
     errorMessage.className = "o-error__message"
-    errorMessage.textContent = `${errorStyle[errorType].message}`
+    errorMessage.textContent = errorMessages
 
     const errorLoading = document.createElement('div')
     errorLoading.className = "o-error__loading l-error__loading"
@@ -66,13 +65,29 @@ function generateErrorMessage(errorType){
     return error
 }
 
+function callError(color, msg){
+    const body = document.getElementsByClassName('js-body')[0]
+    const error = generateErrorMessage(color, msg) 
+    
+    if(!error) return
+
+    function removeErrorMessage(){
+        error.remove()
+    }
+
+    body.appendChild(error)
+    setTimeout(removeErrorMessage, 2000)
+}
+
 function generateTask(task) {
     const item = document.createElement('li')
     item.className = "c-card__item js-item"
 
-    const checkBox = document.createElement('i')
+    const checkBox = document.createElement('input')
     checkBox.className = `c-card__check js-check-item bx ${task.completed ? "bxs-checkbox-checked" : "bx-checkbox"}`
+    checkBox.checked = task.completed ? true : false
     checkBox.setAttribute("data-action", "check")
+    checkBox.setAttribute("type", "checkbox")
 
     const name = document.createElement('span')
     name.className = "c-card__name"
@@ -82,6 +97,7 @@ function generateTask(task) {
     editButton.className = "c-card__button c-card__button--edit js-edit-item"
     editButton.setAttribute("title", "Editar")
     editButton.setAttribute("data-action", "edit")
+    editButton.setAttribute("value", "aa")
 
     const editButtonIcon = document.createElement('i')
     editButtonIcon.className = "bx bxs-edit"
@@ -89,6 +105,7 @@ function generateTask(task) {
     const editButtonSr = document.createElement('span')
     editButtonSr.className = "sr-only"
     editButtonSr.textContent = "Editar"
+    editButtonSr.setAttribute("data-action", "edit")
 
     const deleteButton = document.createElement('button')
     deleteButton.className = "c-card__button c-card__button--delete js-delete-item"
@@ -101,6 +118,7 @@ function generateTask(task) {
     const deleteButtonSr = document.createElement('span')
     deleteButtonSr.className = "sr-only"
     deleteButtonSr.textContent = "Excluir"
+    deleteButtonSr.setAttribute("data-action", "delete")
 
     const editContainer = document.createElement('dialog')
     editContainer.className = "c-card__modal l-card__modal js-edit"
@@ -118,6 +136,13 @@ function generateTask(task) {
     const editInput = document.createElement('input')
     editInput.className = "c-card__input c-card__input--modal js-edit-input"
     editInput.setAttribute("type", "text")
+    editInput.setAttribute("placeholder", "Nome da tarefa")
+
+    editInput.addEventListener('keyup', e => {
+        if(e.key === 'Enter'){
+            editSave.click()
+        }
+    })
 
     const editCancel = document.createElement('button')
     editCancel.className = "o-button o-button--cancel l-button js-edit-cancel"
@@ -182,7 +207,6 @@ function addTask(taskName){
 }
 
 addItemContainer.addEventListener('submit', function(e){
-    const body = document.getElementsByClassName('js-body')[0]
     const itemInput = document.getElementsByClassName('js-item-input')[0]
 
     if(itemInput.value){
@@ -191,16 +215,10 @@ addItemContainer.addEventListener('submit', function(e){
         renderTasks()
         itemInput.value = ""
         itemInput.focus()
+        callError('green', 'Tarefa adicionada com sucesso!')
     }else{
-        const error = generateErrorMessage('empty')
-
-        function removeErrorMessage(){
-            error.remove()
-        }
-
         addItem.blur()
-        body.appendChild(error)
-        setTimeout(removeErrorMessage, 4000)
+        callError('red', 'Você não pode adicionar uma tarefa vazia!')
     }
 
     e.preventDefault()
@@ -261,11 +279,26 @@ ItemContainer.addEventListener('click', e => {
             currentEditModal.close()
         },
         save : function () {
+            if(!currentEditInput.value){
+                callError('red', 'Você não pode salvar uma tarefa vazia!')
+                renderTasks()
+
+                return
+            }
+            if(tasks[currentItemIndex].name === currentEditInput.value) {
+                callError('yellow', 'Não houveram alterações na tarefa!')
+                renderTasks()
+
+                return
+            }
+
             tasks[currentItemIndex].name = currentEditInput.value
+            callError('green', 'Tarefa editada com sucesso!')
             renderTasks()
         },
         delete : function () {
             tasks.splice(currentItemIndex, 1)
+            callError('green', 'Tarefa excluida com sucesso!')
             renderTasks()
         },
         check : function () {
@@ -280,7 +313,12 @@ ItemContainer.addEventListener('click', e => {
 })
 
 clearTasks.addEventListener('click', () => {
+    if(!items.length){
+        callError('yellow', 'Não existem tarefas para serem limpas!')
+        return
+    }
     tasks = []
+    callError('green', 'Tarefas limpas com sucesso!')
     renderTasks()
 })
 
