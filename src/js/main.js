@@ -137,6 +137,7 @@ function generateTask(task) {
     const editInput = document.createElement('input')
     editInput.className = "c-card__input c-card__input--modal js-edit-input"
     editInput.setAttribute("type", "text")
+    editInput.setAttribute("data-action", "editInput")
     editInput.setAttribute("placeholder", "Nome da tarefa")
 
     editInput.addEventListener('keypress', e => {
@@ -151,8 +152,9 @@ function generateTask(task) {
     editCancel.textContent = "Cancelar"
 
     const editSave = document.createElement('button')
-    editSave.className = "o-button l-button js-add-item"
+    editSave.className = "o-button l-button js-edit-save"
     editSave.setAttribute("data-action", "save")
+    editSave.setAttribute("disabled", "")
     editSave.textContent = "Salvar e Aplicar"
     
     item.appendChild(checkBox)
@@ -276,35 +278,65 @@ ItemContainer.addEventListener('click', e => {
         },
         cancel : function () {
             const currentEditModal = currentItem.getElementsByClassName('js-edit')[0]
-
             currentEditModal.close()
         },
         save : function () {
+            const currentEditSave = currentItem.getElementsByClassName('js-edit-save')[0]
+
             if(!currentEditInput.value){
-                callError('red', 'Você não pode salvar uma tarefa vazia!')
-                renderTasks()
+                // callError('red', 'Você não pode salvar uma tarefa vazia!')
 
-                return
+                // return
             }
-            if(tasks[currentItemIndex].name === currentEditInput.value) {
-                callError('yellow', 'Não houveram alterações na tarefa!')
-                renderTasks()
 
-                return
+            if(tasks[currentItemIndex].name === currentEditInput.value) {
+                // callError('yellow', 'Não houveram alterações na tarefa!')
+
+                // return
             }
 
             tasks[currentItemIndex].name = currentEditInput.value
             callError('green', 'Tarefa editada com sucesso!')
-            renderTasks()
         },
         delete : function () {
             tasks.splice(currentItemIndex, 1)
             callError('green', 'Tarefa excluida com sucesso!')
-            renderTasks()
         },
         check : function () {
             tasks[currentItemIndex].done()
-            renderTasks()
+        },
+    }
+
+    if(actions[action]){
+        actions[action]()
+
+        if(!(actions[action] == actions.edit)) renderTasks()
+    }
+})
+
+ItemContainer.addEventListener('keyup', e => {
+    const action = e.target.getAttribute("data-action")
+
+    if(!action) return
+
+    let currentItem = e.target
+
+    while(currentItem.nodeName !== "LI"){
+        currentItem = currentItem.parentElement
+    }
+
+    let currentItemIndex = [...items].indexOf(currentItem)
+    
+    const actions = {
+        editInput : function () {
+            const currentEditSave = currentItem.getElementsByClassName('js-edit-save')[0]
+
+            if(!currentEditInput.value || tasks[currentItemIndex].name === currentEditInput.value){
+                currentEditSave.setAttribute("disabled", "")
+            }else{
+                currentEditSave.removeAttribute("disabled")
+            }
+
         },
     }
 

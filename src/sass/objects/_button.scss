@@ -4,6 +4,14 @@ $layout-name: 'l-button';
 .#{$object-name}{
     @apply flex items-center justify-center gap-1 w-fit bg-main-color text-white p-xs rounded-xs font-bold text-xs transition-all duration-300 overflow-hidden;
 
+    &[disabled]{
+        @apply bg-gray-500 cursor-not-allowed;
+
+        &:hover{
+            @apply scale-100;
+        }
+    }
+
     &:hover{
         @apply scale-105;
     }
@@ -43,6 +51,13 @@ $layout-name: 'l-button';
 
 .#{$layout-name}{
     @apply h-[2.1875rem];
+
+    &[disabled]{
+
+        &:active{
+            translate: 0;
+        }
+    }
 
     &--add{
         @apply flex-[1_1_120px] w-full;
