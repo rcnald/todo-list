@@ -9,11 +9,11 @@ $layout-name: 'l-card';
     }
 
     &__title{
-        @apply text-[60px] font-bold leading-[1];
+        @apply text-[60px] font-bold leading-[1] text-center;
     }
 
     &__container{
-        @apply flex gap-3;
+        @apply flex gap-3 flex-wrap;
     }
 
     &__item{
@@ -42,7 +42,7 @@ $layout-name: 'l-card';
     }
 
     &__check{
-        @apply appearance-none cursor-pointer text-2xl transition-all;
+        @apply flex justify-center h-[13px] w-[13px] items-center appearance-none cursor-pointer text-2xl transition-all;
 
         &[class~="bxs-checkbox-checked"]{
             @apply text-main-color;
@@ -50,6 +50,14 @@ $layout-name: 'l-card';
             & ~ .#{$component-name}__name{
                 @apply line-through;
             }
+        }
+
+        &:hover{
+            @apply scale-110;
+        }
+
+        &::before{
+            @apply pointer-events-none;
         }
     }
 
@@ -100,11 +108,7 @@ $layout-name: 'l-card';
 }
 
 .#{$layout-name}{
-    &__container{
-        @apply h-[2.5rem];
-    }
-
     &__input{
-        @apply min-w-[150px] w-full;
+        @apply flex-[1_1_180px] h-[40px] w-full;
     }
 }

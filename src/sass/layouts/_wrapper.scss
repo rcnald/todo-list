@@ -4,6 +4,6 @@ $layout-name: 'l-wrapper';
     @apply w-full max-w-md;
 
     &--flex-jb-ic{
-        @apply flex justify-between items-center
+        @apply flex justify-between items-center gap-1
     }
 }

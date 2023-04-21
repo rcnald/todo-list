@@ -3,6 +3,7 @@ const addItem = document.getElementsByClassName('js-add-item')[0]
 const ItemList = document.getElementsByClassName('js-list')[0]
 const ItemContainer = document.getElementsByClassName('js-event-listener')[0]
 const items = document.getElementsByClassName('js-item')
+const itemInput = document.getElementsByClassName('js-item-input')[0]
 const pendencies = document.getElementsByClassName('js-pendencies')[0]
 const clearTasks = document.getElementsByClassName('js-clear-tasks')[0]
 
@@ -85,9 +86,9 @@ function generateTask(task) {
 
     const checkBox = document.createElement('input')
     checkBox.className = `c-card__check js-check-item bx ${task.completed ? "bxs-checkbox-checked" : "bx-checkbox"}`
-    checkBox.checked = task.completed ? true : false
-    checkBox.setAttribute("data-action", "check")
     checkBox.setAttribute("type", "checkbox")
+    checkBox.setAttribute("data-action", "check")
+    checkBox.checked = task.completed
 
     const name = document.createElement('span')
     name.className = "c-card__name"
@@ -138,7 +139,7 @@ function generateTask(task) {
     editInput.setAttribute("type", "text")
     editInput.setAttribute("placeholder", "Nome da tarefa")
 
-    editInput.addEventListener('keyup', e => {
+    editInput.addEventListener('keypress', e => {
         if(e.key === 'Enter'){
             editSave.click()
         }
@@ -199,30 +200,14 @@ function renderTasks(){
     }else{
         pendencies.textContent = `Você tem ${tasksNumbers} tarefas pendentes`
     }
+
+    itemInput.focus()
 }
 
 function addTask(taskName){
     tasks.unshift(new Task(taskName))
     renderTasks()
 }
-
-addItemContainer.addEventListener('submit', function(e){
-    const itemInput = document.getElementsByClassName('js-item-input')[0]
-
-    if(itemInput.value){
-        addTask(itemInput.value)
-        buttonAnimation()
-        renderTasks()
-        itemInput.value = ""
-        itemInput.focus()
-        callError('green', 'Tarefa adicionada com sucesso!')
-    }else{
-        addItem.blur()
-        callError('red', 'Você não pode adicionar uma tarefa vazia!')
-    }
-
-    e.preventDefault()
-})
 
 function buttonAnimation (){
     const addItemName = document.getElementsByClassName('js-button-name')[0]
@@ -252,6 +237,22 @@ function buttonAnimation (){
     setTimeout(animationNameEnd, 2000)
     setTimeout(animationButton, 3300)
 }
+
+addItemContainer.addEventListener('submit', function(e){
+    if(itemInput.value){
+        addTask(itemInput.value)
+        buttonAnimation()
+        renderTasks()
+        itemInput.value = ""
+        itemInput.focus()
+        callError('green', 'Tarefa adicionada com sucesso!')
+    }else{
+        addItem.blur()
+        callError('red', 'Você não pode adicionar uma tarefa vazia!')
+    }
+
+    e.preventDefault()
+})
 
 ItemContainer.addEventListener('click', e => {
     const action = e.target.getAttribute("data-action")

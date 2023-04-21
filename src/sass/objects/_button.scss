@@ -42,10 +42,10 @@ $layout-name: 'l-button';
 }
 
 .#{$layout-name}{
-    @apply h-[2.1875rem] max-w-none w-fit;
+    @apply h-[2.1875rem];
 
     &--add{
-        @apply max-w-[120px] w-full;
+        @apply flex-[1_1_120px] w-full;
         box-shadow: 0px 5px 0px 0px var(--accent-color);
     }
 
