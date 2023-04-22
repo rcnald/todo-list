@@ -1,3 +1,5 @@
+"use strict"
+
 const addItemContainer = document.getElementsByClassName('js-add')[0]
 const addItem = document.getElementsByClassName('js-add-item')[0]
 const ItemList = document.getElementsByClassName('js-list')[0]
@@ -55,7 +57,6 @@ function generateErrorMessage(errorType, errorMessages){
 
     const errorLoading = document.createElement('div')
     errorLoading.className = "o-message__loading l-message__loading"
-
 
     errorWrapper.appendChild(errorIcon)
     errorWrapper.appendChild(errorMessage)
@@ -275,16 +276,15 @@ ItemContainer.addEventListener('click', e => {
     }
 
     let currentItemIndex = [...items].indexOf(currentItem)
+    const currentEditModal = currentItem.getElementsByClassName('js-edit')[0]
+    const currentEditInput = currentItem.getElementsByClassName('js-edit-input')[0]
     
     const actions = {
         edit : function () {
-            currentEditModal = currentItem.getElementsByClassName('js-edit')[0]
-            currentEditInput = currentItem.getElementsByClassName('js-edit-input')[0]
             currentEditInput.value = tasks[currentItemIndex].name
             currentEditModal.showModal()
         },
         cancel : function () {
-            const currentEditModal = currentItem.getElementsByClassName('js-edit')[0]
             currentEditModal.close()
         },
         save : function () {
@@ -322,6 +322,7 @@ ItemContainer.addEventListener('keyup', e => {
     
     const actions = {
         editInput : function () {
+            const currentEditInput = currentItem.getElementsByClassName('js-edit-input')[0]
             const currentEditSave = currentItem.getElementsByClassName('js-edit-save')[0]
 
             if(!currentEditInput.value || tasks[currentItemIndex].name === currentEditInput.value){
@@ -329,7 +330,6 @@ ItemContainer.addEventListener('keyup', e => {
             }else{
                 currentEditSave.removeAttribute("disabled")
             }
-
         },
     }
 
