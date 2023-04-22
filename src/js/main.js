@@ -202,7 +202,7 @@ function renderTasks(){
     if(!tasksNumbers){
         pendencies.textContent = "Você não tem tarefas pendentes"
     }else{
-        pendencies.textContent = `Você tem ${tasksNumbers} tarefas pendentes`
+        pendencies.textContent = `Você tem ${tasksNumbers} ${tasksNumbers === 1 ? "tarefa" : "tarefas"} ${tasksNumbers === 1 ? "pendente" : "pendentes"}`
     }
 
     itemInput.focus()
