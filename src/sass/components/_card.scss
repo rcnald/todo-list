@@ -17,7 +17,7 @@ $layout-name: 'l-card';
     }
 
     &__item{
-        @apply flex items-center justify-between p-4 rounded-xl gap-4;
+        @apply flex items-center justify-between p-4 rounded-xl gap-4 w-full;
 
         &:hover{
             @apply bg-gray-200 cursor-pointer;
@@ -53,7 +53,7 @@ $layout-name: 'l-card';
     }
 
     &__name{
-        @apply text-text-color mr-auto;
+        @apply text-text-color mr-auto whitespace-nowrap text-ellipsis overflow-hidden w-full;
     }
 
     &__check{
@@ -120,10 +120,21 @@ $layout-name: 'l-card';
             @apply flex-col gap-1;
         }
     }
+    
+    &__list{
+        @apply flex flex-col w-full;
+    }
+
 }
 
 .#{$layout-name}{
+    @apply w-full;
+
     &__input{
         @apply flex-[1_1_180px] h-[40px] w-full;
+    }
+    
+    &__list{
+        @apply overflow-y-auto max-h-[200px];
     }
 }

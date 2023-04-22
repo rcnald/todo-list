@@ -11,58 +11,60 @@
         <title>to-do list</title>
     </head>
     <body class="c-body l-body js-body">
-        <main class="c-main l-wrapper">
-            <section class="c-card l-card">
-                <div class="c-card__header">
-                    <h1 class="c-card__title">To-do List</h1>
-                </div>
+        <main class="c-main l-main l-wrapper--overflow">
+            <div class="l-wrapper c-main__wrapper">
+                <section class="c-card l-card">
+                    <div class="c-card__header">
+                        <h1 class="c-card__title">To-do List</h1>
+                    </div>
 
-                <form class="c-card__container js-add" action="#">
-                    <input class="c-card__input l-card__input js-item-input" type="text" placeholder="Nova tarefa">
-                    <button class="o-button o-button--add l-button l-button--add js-add-item" type="submit">
-                        <i class="o-button__icon l-button__icon bx bx-list-plus js-button-icon"></i>
-                        <span class="o-button__name l-button__name js-button-name">Adicionar</span>
-                    </button>
-                </form>
-            </section>
-
-            <section class="c-card l-card js-event-listener">
-                <ul class="c-card__list js-list">
-                    <li class="c-card__item js-item">
-                        <i class="c-card__check js-check-item bx bx-checkbox" data-action="check"></i>
-                        <span class="c-card__name">Nome da tarefa</span>
-                        <button class="c-card__button c-card__button--edit js-edit-item" title="Editar" data-action="edit">
-                            <i class="bx bxs-edit"></i>
-                            <span class="sr-only">Editar</span>
+                    <form class="c-card__container js-add" action="#">
+                        <input class="c-card__input l-card__input js-item-input" type="text" placeholder="Nova tarefa" maxlength="50">
+                        <button class="o-button o-button--add l-button l-button--add js-add-item" type="submit">
+                            <i class="o-button__icon l-button__icon bx bx-list-plus js-button-icon"></i>
+                            <span class="o-button__name l-button__name js-button-name">Adicionar</span>
                         </button>
-                        <button class="c-card__button c-card__button--delete js-delete-item" title="Excluir" data-action="delete">
-                            <i class="bx bxs-trash"></i>
-                            <span class="sr-only">Excluir</span>
+                    </form>
+                </section>
+
+                <section class="c-card l-card u-custom-scrollbar js-event-listener">
+                    <ul class="c-card__list l-card__list js-list">
+                        <li class="c-card__item js-item">
+                            <i class="c-card__check js-check-item bx bx-checkbox" data-action="check"></i>
+                            <span class="c-card__name">Nome da tarefa</span>
+                            <button class="c-card__button c-card__button--edit js-edit-item" title="Editar" data-action="edit">
+                                <i class="bx bxs-edit"></i>
+                                <span class="sr-only">Editar</span>
+                            </button>
+                            <button class="c-card__button c-card__button--delete js-delete-item" title="Excluir" data-action="delete">
+                                <i class="bx bxs-trash"></i>
+                                <span class="sr-only">Excluir</span>
+                            </button>
+
+                            <dialog class="c-card__modal l-card__modal js-edit">
+                                <div class="c-card__wrapper c-card__wrapper--modal">
+                                    <label class="c-card__name">Novo nome</label>
+                                    <input class="c-card__input c-card__input--modal js-edit-input" type="text">
+                                </div>
+                                <div class="l-wrapper c-card__wrapper">
+                                    <button class="o-button o-button--cancel l-button js-edit-cancel" data-action="cancel">Cancelar</button>
+                                    <button class="o-button l-button l-button--save js-edit-save" data-action="save">Salvar e Aplicar</button>
+                                </div>
+                            </dialog>
+                        </li>
+                    </ul>
+                
+                    <div class="l-wrapper l-wrapper--flex-jb-ic">
+                        <span class="o-pendencies js-pendencies">Você não tem tarefas pendentes</span>
+                        <button class="o-button l-button js-clear-tasks">
+                            <span>Limpar</span>
                         </button>
-
-                        <dialog class="c-card__modal l-card__modal js-edit">
-                            <div class="c-card__wrapper c-card__wrapper--modal">
-                                <label class="c-card__name">Novo nome</label>
-                                <input class="c-card__input c-card__input--modal js-edit-input" type="text">
-                            </div>
-                            <div class="l-wrapper c-card__wrapper">
-                                <button class="o-button o-button--cancel l-button js-edit-cancel" data-action="cancel">Cancelar</button>
-                                <button class="o-button l-button l-button--save js-edit-save" data-action="save">Salvar e Aplicar</button>
-                            </div>
-                        </dialog>
-                    </li>
-                </ul>
-
-                <div class="l-wrapper l-wrapper--flex-jb-ic">
-                    <span class="o-pendencies js-pendencies">Você não tem tarefas pendentes</span>
-                    <button class="o-button l-button js-clear-tasks">
-                        <span>Limpar</span>
-                    </button>
-                </div>
-            </section>
+                    </div>
+                </section>
+            </div>
         </main>
     </body>
-
+    
     <script src="js/main.js"></script>
     <noscript>Seu navegar<strong> não suporta </strong>JavaScript ou ele está <strong> desabilitado!</strong></noscript>
 </html>

@@ -1,10 +1,14 @@
 $component-name: 'c-main';
-$layout-name: 'l-';
+$layout-name: 'l-main';
 
 .#{$component-name}{
-    @apply flex flex-col gap-5
+    @apply grid place-items-center;
+
+    &__wrapper{
+        @apply flex flex-col gap-5;
+    }
 }
 
 .#{$layout-name}{
-
+    @apply w-full min-w-0 max-h-screen;
 }

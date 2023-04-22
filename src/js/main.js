@@ -93,6 +93,7 @@ function generateTask(task) {
     const name = document.createElement('span')
     name.className = "c-card__name"
     name.textContent = task.name
+    name.setAttribute("title", `${task.name}`)
 
     const editButton = document.createElement('button')
     editButton.className = "c-card__button c-card__button--edit js-edit-item"
@@ -222,7 +223,7 @@ function buttonAnimation (){
     }
 
     animationButton = () => {
-        toggleClass(addItemIcon, 'bx-list-check','icon-animation','bx-list-plus')
+        toggleClass(addItemIcon, 'bx-list-check','u-icon-animation','bx-list-plus')
         toggleClass(addItemName, 'has-disappear')
     }
 

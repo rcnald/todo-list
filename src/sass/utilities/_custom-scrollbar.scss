@@ -1,0 +1,14 @@
+.u-custom-scrollbar{
+    ::-webkit-scrollbar {
+        width: 5px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background:  rgb(236, 233, 233);
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: grey;
+        border-radius: 10px;
+    }
+}

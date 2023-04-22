@@ -1,3 +1,5 @@
+@use '../abstract/' as *;
+
 $layout-name: 'l-wrapper';
 
 .#{$layout-name}{
@@ -5,5 +7,10 @@ $layout-name: 'l-wrapper';
 
     &--flex-jb-ic{
         @apply flex justify-between items-center gap-1
+    }
+
+    &--overflow{
+        @apply  overflow-auto p-1; 
+
     }
 }

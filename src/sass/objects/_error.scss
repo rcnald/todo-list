@@ -63,7 +63,7 @@ $layout-name: 'l-error';
         @apply w-full h-1 relative;
 
         &::after{
-            @apply absolute top-0 left-0 h-1 w-full loading;
+            @apply absolute top-0 left-0 h-1 w-full is-loading;
         }
     }
 }

@@ -2,9 +2,9 @@ $component-name: 'c-body';
 $layout-name: 'l-body';
 
 .#{$component-name}{
-    @apply grid place-items-center font-ff-main bg-bg-body-color p-4;
+    @apply grid place-items-center font-ff-main bg-bg-body-color overflow-hidden;
 }
 
 .#{$layout-name}{
-    @apply min-h-screen;
+    @apply min-h-screen w-full;
 }
