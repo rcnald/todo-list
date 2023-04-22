@@ -2,23 +2,28 @@ $object-name: 'o-button';
 $layout-name: 'l-button';
 
 .#{$object-name}{
-    @apply flex items-center justify-center gap-1 w-fit bg-main-color text-white p-xs rounded-xs font-bold text-xs transition-all duration-300 overflow-hidden;
+    @apply flex items-center justify-center gap-1 bg-main-color text-white p-xs rounded-xs font-bold text-xs transition-all duration-300;
+    
+    &:active{
+        @apply transition-all duration-100;
+    }
+    
+    &:hover{
+        @apply scale-105;
+    }
 
     &[disabled]{
-        @apply bg-gray-500 cursor-not-allowed;
+        @apply bg-gray-500 cursor-not-allowed transition-none;
 
         &:hover{
             @apply scale-100;
         }
     }
 
-    &:hover{
-        @apply scale-105;
-    }
 
     &--add{
         &:active{
-            @apply bg-green-500 transition-all duration-[1s];
+            @apply bg-green-500 transition-all duration-1000;
         }
 
         &:hover,
@@ -40,28 +45,20 @@ $layout-name: 'l-button';
     }
 
     &__icon{
-        @apply text-xl transition-all duration-200 opacity-0;
+        @apply text-xl opacity-0 transition-all duration-200;
     }
 
     &__name{
-        transition: all 200ms;
-        transform-origin: left;
+        @apply origin-left transition-all duration-200 ;
     }
 }
 
 .#{$layout-name}{
-    @apply h-[2.1875rem];
-
-    &[disabled]{
-
-        &:active{
-            translate: 0;
-        }
-    }
-
-    &--add{
-        @apply flex-[1_1_120px] w-full;
-        box-shadow: 0px 5px 0px 0px var(--accent-color);
+    @apply h-[2.1875rem] w-fit overflow-hidden;
+    
+    &:active{
+        box-shadow: 0px 0px 0px 0px;
+        translate: 0 5px;
     }
 
     &:hover,
@@ -75,10 +72,15 @@ $layout-name: 'l-button';
         }
     }
 
-    &:active{
-        @apply transition-all duration-100;
-        box-shadow: 0px 0px 0px 0px;
-        translate: 0 5px;
+    &[disabled]{
+        &:active{
+            translate: 0;
+        }
+    }
+
+    &--add{
+        @apply flex-[1_1_120px] w-full;
+        box-shadow: 0px 5px 0px 0px var(--accent-color);
     }
 
     &__icon{

@@ -1,5 +1,5 @@
-$object-name: 'o-error';
-$layout-name: 'l-error';
+$object-name: 'o-message';
+$layout-name: 'l-message';
 
 .#{$object-name}{
     @apply flex flex-col rounded-md border overflow-hidden transition-all duration-300;
@@ -51,12 +51,12 @@ $layout-name: 'l-error';
 }
 
 .#{$layout-name}{
-    @apply fixed origin-top top-[20px];
+    @apply fixed origin-top top-[1.25rem];
     transform: translateY(-50px);
     rotate: x -90deg;
 
     &__wrapper{
-        @apply w-[95%] max-w-[500px]
+        @apply w-[95%] max-w-[31.25rem]
     }
 
     &__loading{

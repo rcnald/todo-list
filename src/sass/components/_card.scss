@@ -4,8 +4,12 @@ $layout-name: 'l-card';
 .#{$component-name}{
     @apply flex flex-col gap-3 bg-white p-10 rounded-md;
 
-    &__header{
-        @apply flex items-center;
+    &__wrapper{
+        @apply flex gap-2;
+
+        &--modal{
+            @apply flex-col gap-1;
+        }
     }
 
     &__title{
@@ -14,14 +18,6 @@ $layout-name: 'l-card';
 
     &__container{
         @apply flex gap-3 flex-wrap;
-    }
-
-    &__item{
-        @apply flex items-center justify-between p-4 rounded-xl gap-4 w-full;
-
-        &:hover{
-            @apply bg-gray-200 cursor-pointer;
-        }
     }
 
     &__input{
@@ -52,12 +48,21 @@ $layout-name: 'l-card';
         
     }
 
-    &__name{
-        @apply text-text-color mr-auto whitespace-nowrap text-ellipsis overflow-hidden w-full;
+    &__list{
+        @apply flex flex-col;
     }
 
+    &__item{
+        @apply flex items-center justify-between rounded-xl p-4 gap-4;
+
+        &:hover{
+            @apply bg-gray-200 cursor-pointer;
+        }
+    }
+
+
     &__check{
-        @apply flex justify-center h-[13px] w-[13px] items-center appearance-none cursor-pointer text-2xl transition-all;
+        @apply flex justify-center items-center appearance-none cursor-pointer text-2xl transition-all duration-100;
 
         &[class~="bxs-checkbox-checked"]{
             @apply text-main-color;
@@ -76,8 +81,13 @@ $layout-name: 'l-card';
         }
     }
 
+    &__name{
+        @apply text-text-color;
+    }
+
+
     &__button{
-        @apply transition-all duration-200 text-gray-600 flex;
+        @apply flex text-gray-600 transition-all duration-200;
 
         & > *{
             @apply pointer-events-none
@@ -102,7 +112,6 @@ $layout-name: 'l-card';
 
     &__modal{
         @apply flex-col gap-3 rounded-md;
-        box-shadow: 0px 0px 11px 1px rgba(145,140,145,0.75);
 
         &[open]{
             @apply flex;
@@ -112,29 +121,32 @@ $layout-name: 'l-card';
             background: rgba(8, 8, 8, .5);
         }
     }
-
-    &__wrapper{
-        @apply flex gap-2;
-
-        &--modal{
-            @apply flex-col gap-1;
-        }
-    }
-    
-    &__list{
-        @apply flex flex-col w-full;
-    }
-
 }
 
 .#{$layout-name}{
     @apply w-full;
 
     &__input{
-        @apply flex-[1_1_180px] h-[40px] w-full;
+        @apply flex-[1_1_180px] h-[2.5rem] w-full;
     }
     
     &__list{
-        @apply overflow-y-auto max-h-[200px];
+        @apply overflow-y-auto max-h-[12.5rem] w-full;
+    }
+
+    &__item{
+        @apply w-full;
+    }
+
+    &__check{
+        @apply h-[0.8125rem] w-[0.8125rem];
+    }
+
+    &__name{
+        @apply mr-auto whitespace-nowrap text-ellipsis overflow-hidden w-full;
+    }
+
+    &__modal{
+        box-shadow: 0px 0px 11px 1px rgba(145,140,145,0.75);
     }
 }

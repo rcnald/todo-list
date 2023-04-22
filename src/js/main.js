@@ -20,19 +20,19 @@ let tasks = []
 function generateErrorMessage(errorType, errorMessages){
     const errorStyle = {
         red : {
-            background : "o-error--red",
+            background : "o-message--red",
             icon : "bxs-error-circle",
-            iconColor : "o-error__icon--red",
+            iconColor : "o-message__icon--red",
         },
         yellow : {
-            background : "o-error--yellow",
+            background : "o-message--yellow",
             icon : "bxs-error",
-            iconColor : "o-error__icon--yellow",
+            iconColor : "o-message__icon--yellow",
         },
         green : {
-            background : "o-error--green",
+            background : "o-message--green",
             icon : "bxs-check-circle",
-            iconColor : "o-error__icon--green",
+            iconColor : "o-message__icon--green",
         },
     }
 
@@ -41,20 +41,20 @@ function generateErrorMessage(errorType, errorMessages){
     if(exists && exists.textContent === errorMessages) return 
 
     const error = document.createElement('div')
-    error.className = `o-error ${errorStyle[errorType].background} l-error l-error__wrapper has-shown`
+    error.className = `o-message ${errorStyle[errorType].background} l-message l-message__wrapper has-shown`
 
     const errorWrapper = document.createElement('div')
-    errorWrapper.className = "o-error__wrapper l-error__wrapper"
+    errorWrapper.className = "o-message__wrapper l-message__wrapper"
 
     const errorIcon = document.createElement('i')
-    errorIcon.className = `o-error__icon ${errorStyle[errorType].iconColor} bx ${errorStyle[errorType].icon}`
+    errorIcon.className = `o-message__icon ${errorStyle[errorType].iconColor} bx ${errorStyle[errorType].icon}`
 
     const errorMessage = document.createElement('p')
-    errorMessage.className = "o-error__message"
+    errorMessage.className = "o-message__message"
     errorMessage.textContent = errorMessages
 
     const errorLoading = document.createElement('div')
-    errorLoading.className = "o-error__loading l-error__loading"
+    errorLoading.className = "o-message__loading l-message__loading"
 
 
     errorWrapper.appendChild(errorIcon)
@@ -76,22 +76,22 @@ function callError(color, msg){
         error.remove()
     }
 
-    body.appendChild(error)
+    body.prepend(error)
     setTimeout(removeErrorMessage, 2000)
 }
 
 function generateTask(task) {
     const item = document.createElement('li')
-    item.className = "c-card__item js-item"
+    item.className = "c-card__item l-card__item js-item"
 
     const checkBox = document.createElement('input')
-    checkBox.className = `c-card__check js-check-item bx ${task.completed ? "bxs-checkbox-checked" : "bx-checkbox"}`
+    checkBox.className = `c-card__check l-card__check bx ${task.completed ? "bxs-checkbox-checked" : "bx-checkbox"} js-check-item`
     checkBox.setAttribute("type", "checkbox")
     checkBox.setAttribute("data-action", "check")
     checkBox.checked = task.completed
 
     const name = document.createElement('span')
-    name.className = "c-card__name"
+    name.className = "c-card__name l-card__name"
     name.textContent = task.name
     name.setAttribute("title", `${task.name}`)
 
