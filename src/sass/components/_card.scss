@@ -4,6 +4,18 @@ $layout-name: 'l-card';
 .#{$component-name}{
     @apply flex flex-col gap-3 bg-white p-10 rounded-md;
 
+    &--modal{
+        @apply hidden flex-col gap-3 rounded-md p-5;
+
+        &[open]{
+            @apply flex;
+        }
+
+        &::backdrop{
+            background: rgba(8, 8, 8, .5);
+        }
+    }
+
     &__wrapper{
         @apply flex gap-2;
 
@@ -109,22 +121,14 @@ $layout-name: 'l-card';
             }
         }
     }
-
-    &__modal{
-        @apply flex-col gap-3 rounded-md;
-
-        &[open]{
-            @apply flex;
-        }
-
-        &::backdrop{
-            background: rgba(8, 8, 8, .5);
-        }
-    }
 }
 
 .#{$layout-name}{
     @apply w-full;
+
+    &--modal{
+        box-shadow: 0px 0px 11px 1px rgba(145,140,145,0.75);
+    }
 
     &__input{
         @apply flex-[1_1_180px] h-[2.5rem] w-full;
@@ -143,10 +147,6 @@ $layout-name: 'l-card';
     }
 
     &__name{
-        @apply mr-auto whitespace-nowrap text-ellipsis overflow-hidden w-full;
-    }
-
-    &__modal{
-        box-shadow: 0px 0px 11px 1px rgba(145,140,145,0.75);
+        @apply mr-auto whitespace-nowrap text-ellipsis overflow-hidden w-fit;
     }
 }

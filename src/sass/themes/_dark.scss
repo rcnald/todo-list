@@ -1,0 +1,129 @@
+$theme-name: 't-dark';
+
+.#{$theme-name}{
+    .c-body{
+        @apply bg-[#1a1625];
+    }
+
+    .c-card{
+        @apply bg-[#2f2b3a];
+
+        &--modal{
+            box-shadow: 0px 0px 11px 1px;
+        }
+
+        &__title{
+            @apply text-white;
+        }
+
+        &__input{
+            @apply bg-[#1a1625] text-white;
+
+            &:hover,
+            &:focus{
+                @apply outline outline-1 outline-gray-600; 
+            }
+
+            &--invalid{
+                @apply outline outline-2 outline-red-600 transition-all duration-100;
+    
+                &:hover,
+                &:focus{
+                    @apply outline outline-2 outline-red-600 caret-red-600 transition-all duration-100; 
+                }
+    
+                &::placeholder{
+                    @apply text-red-600;
+                }
+    
+            }
+        }
+
+        &__item{
+            &:hover{
+                @apply bg-[#2b2735];
+            }
+        }
+
+        &__check{
+            @apply text-[#acacac];
+
+            &[class~="bxs-checkbox-checked"]{
+                @apply text-main-color;
+            }
+        }
+
+        &__name{
+            @apply text-white;
+        }
+
+        &__button{
+            @apply text-[#acacac];
+
+            &--edit{
+                &:hover{
+                    @apply text-main-color;
+                }
+            }
+    
+            &--delete{
+                &:hover{
+                    @apply text-red-600;
+                }
+            }
+        }
+    }
+
+    .o-message{
+        &--red{
+            @apply bg-red-400 border-red-500
+        }
+    
+        &--yellow{
+            @apply bg-amber-400 border-amber-500
+    
+        }
+    
+        &--green{
+            @apply bg-green-400 border-green-500
+        }
+    
+        &__icon{
+            @apply text-3xl;
+    
+            &--red{
+                @apply text-red-100;
+            }
+    
+            &--yellow{
+                @apply text-amber-100;
+            }
+    
+            &--green{
+                @apply text-green-100;
+            }
+        }
+
+        &__message{
+            @apply text-white;
+        }
+
+        &__loading{
+            @apply bg-gray-500;
+        }
+    }
+
+    .o-button{
+        &--cancel{
+            @apply border-2;
+
+            &:hover{
+                @apply border-red-600 text-red-600
+            }
+        }
+    }
+
+    .u-thin{
+        @apply text-white
+    }
+}

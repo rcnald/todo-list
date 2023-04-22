@@ -124,7 +124,7 @@ function generateTask(task) {
     deleteButtonSr.setAttribute("data-action", "delete")
 
     const editContainer = document.createElement('dialog')
-    editContainer.className = "c-card__modal l-card__modal js-edit"
+    editContainer.className = "c-card c-card--modal l-card--modal js-edit"
 
     const editWrapperInput = document.createElement('div')
     editWrapperInput.className = "c-card__wrapper c-card__wrapper--modal"
