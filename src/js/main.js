@@ -354,8 +354,10 @@ theme.addEventListener('click', () => {
 
     if(!theme.querySelector('input').checked){
         html.classList.add('t-dark')
+        theme.title = "Tema escuro"
     }else{
         html.classList.remove('t-dark')
+        theme.title = "Tema claro"
     }
 })
 

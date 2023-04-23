@@ -130,4 +130,8 @@ $theme-name: 't-dark';
     .u-thin{
         @apply text-white
     }
+    
+    noscript{
+        @apply text-white;
+    }
 }
