@@ -8,6 +8,7 @@ const items = document.getElementsByClassName('js-item')
 const itemInput = document.getElementsByClassName('js-item-input')[0]
 const pendencies = document.getElementsByClassName('js-pendencies')[0]
 const clearTasks = document.getElementsByClassName('js-clear-tasks')[0]
+const theme = document.getElementsByClassName('js-switch')[0]
 
 function Task(name, completed) {
     this.name = name,
@@ -223,15 +224,15 @@ function buttonAnimation (){
         }
     }
 
-    animationButton = () => {
+    let animationButton = () => {
         toggleClass(addItemIcon, 'bx-list-check','u-icon-animation','bx-list-plus')
         toggleClass(addItemName, 'has-disappear')
     }
 
-    animationNameStart = () => {
+    let animationNameStart = () => {
         addItemName.textContent = "Adicionado"
     }
-    animationNameEnd = () => {
+    let animationNameEnd = () => {
         addItemName.textContent = "Adicionar"
         addItem.blur()
     }
@@ -346,6 +347,16 @@ clearTasks.addEventListener('click', () => {
     tasks = []
     callError('green', 'Tarefas limpas com sucesso!')
     renderTasks()
+})
+
+theme.addEventListener('click', () => {
+    const html = document.getElementsByTagName('html')[0]
+
+    if(!theme.querySelector('input').checked){
+        html.classList.add('t-dark')
+    }else{
+        html.classList.remove('t-dark')
+    }
 })
 
 renderTasks()
