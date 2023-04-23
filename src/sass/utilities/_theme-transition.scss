@@ -1,0 +1,7 @@
+.theme-transition{
+    @apply transition-all duration-200;
+}
+
+.u-theme-transition{
+    @extend .theme-transition;
+}

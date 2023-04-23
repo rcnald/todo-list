@@ -2,7 +2,7 @@ $object-name: 'o-switch';
 $layout-name: 'l-switch';
 
 .#{$object-name}{
-    --switch-bg: #000;
+    --switch-bg: #FFF;
     
     @apply block;
 
@@ -11,26 +11,26 @@ $layout-name: 'l-switch';
 
         &:checked{
             & + .#{$object-name}__slider{
-                    @apply bg-black;
+                    @apply bg-[var(--switch-bg)];
             } 
         }
     }
 
     &__slider{
-        @apply cursor-pointer;
+        @apply cursor-pointer theme-transition;
 
         &::before{
-            @apply bg-[rgb(219,198,2)] rounded-[1.875rem] transition-all duration-300;
+            @apply bg-[rgb(219,198,2)] rounded-[1.875rem] theme-transition;
         }
 
         &::after{
-            @apply rounded-full bg-[var(--switch-bg)] transition-all ease-linear duration-300;
+            @apply rounded-full bg-[var(--switch-bg)] theme-transition ease-linear;
         }
     }
 }
 
 .#{$layout-name}{
-    @apply relative w-[3.5em] h-[2em];
+    @apply relative w-[3.5em] h-[2em] self-baseline place-self-end;
 
     &__check{
         &:checked{

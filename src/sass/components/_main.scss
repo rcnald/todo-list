@@ -2,17 +2,10 @@ $component-name: 'c-main';
 $layout-name: 'l-main';
 
 .#{$component-name}{
-    @apply grid place-items-center p-3;
+    @apply flex flex-col gap-5;
 
-    &__wrapper{
-        @apply flex flex-col gap-5; 
-    }
 }
 
 .#{$layout-name}{
-    @apply w-full max-h-screen overflow-auto;
-
-    &__wrapper{
-        @apply min-w-0;
-    }
+    @apply w-full min-w-0;
 }

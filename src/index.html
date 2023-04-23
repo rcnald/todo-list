@@ -11,13 +11,13 @@
         <title>to-do list</title>
     </head>
     <body class="c-body l-body js-body">
-        <main class="c-main l-main">
+        <div class="l-wrapper l-wrapper--overflow">
             <label class="o-switch l-switch js-switch" for="switch">
                 <input class="o-switch__check l-switch__check" type="checkbox" id="switch">
                 <span class="o-switch__slider l-switch__slider"></span>
             </label>
-
-            <div class="l-wrapper c-main__wrapper l-main__wrapper">
+            
+            <main class="c-main l-main l-wrapper">
                 <section class="c-card l-card">
                     <h1 class="c-card__title">To-do List</h1>
                     <form class="c-card__container js-add" action="#">
@@ -57,12 +57,12 @@
                     </ul>
                 
                     <div class="l-wrapper--center">
-                        <span class="u-thin js-pendencies">Você tem 1 tarefa pendente</span>
+                        <span class="u-thin theme-transition js-pendencies">Você tem 1 tarefa pendente</span>
                         <button class="o-button l-button js-clear-tasks">Limpar</button>
                     </div>
                 </section>
-            </div>
-        </main>
+            </main>
+        </div>
     </body>
     
     <script src="js/main.js"></script>

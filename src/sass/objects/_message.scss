@@ -2,7 +2,7 @@ $object-name: 'o-message';
 $layout-name: 'l-message';
 
 .#{$object-name}{
-    @apply flex flex-col rounded-md border overflow-hidden transition-all duration-300;
+    @apply flex flex-col rounded-md border overflow-hidden z-50 theme-transition;
 
     &--red{
         @apply bg-red-100 border-red-200
@@ -18,7 +18,7 @@ $layout-name: 'l-message';
     }
 
     &__icon{
-        @apply text-3xl;
+        @apply text-3xl theme-transition;
 
         &--red{
             @apply text-red-400;
@@ -34,7 +34,7 @@ $layout-name: 'l-message';
     }
 
     &__message{
-        @apply font-medium;
+        @apply font-medium theme-transition;
     }
 
     &__wrapper{
@@ -42,7 +42,7 @@ $layout-name: 'l-message';
     }
 
     &__loading{
-        @apply bg-gray-400;
+        @apply bg-gray-400 theme-transition;
 
         &::after{
             @apply content-[''] bg-main-color;

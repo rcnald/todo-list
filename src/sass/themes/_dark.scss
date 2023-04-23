@@ -74,6 +74,10 @@ $theme-name: 't-dark';
         }
     }
 
+    .o-switch{
+        --switch-bg: #000;
+    }
+
     .o-message{
         &--red{
             @apply bg-red-400 border-red-500

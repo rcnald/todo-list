@@ -2,7 +2,7 @@ $component-name: 'c-card';
 $layout-name: 'l-card';
 
 .#{$component-name}{
-    @apply flex flex-col gap-3 bg-white p-10 rounded-md;
+    @apply flex flex-col gap-3 bg-white p-10 rounded-md theme-transition;
 
     &--modal{
         @apply hidden flex-col gap-3 rounded-md p-5;
@@ -25,7 +25,7 @@ $layout-name: 'l-card';
     }
 
     &__title{
-        @apply text-[60px] font-bold leading-[1] text-center;
+        @apply text-[60px] font-bold leading-[1] text-center theme-transition;
     }
 
     &__container{
@@ -33,11 +33,11 @@ $layout-name: 'l-card';
     }
 
     &__input{
-        @apply bg-input-color p-xs rounded-xs text-text-color transition-all duration-100;
+        @apply bg-input-color p-xs rounded-xs text-text-color theme-transition;
         
         &:hover,
         &:focus{
-            @apply outline outline-1 outline-outline-color; 
+            @apply outline outline-1 outline-outline-color transition-none; 
         }
 
         &--invalid{
@@ -74,7 +74,7 @@ $layout-name: 'l-card';
 
 
     &__check{
-        @apply flex justify-center items-center appearance-none cursor-pointer text-2xl transition-all duration-100;
+        @apply flex justify-center items-center appearance-none cursor-pointer text-2xl theme-transition;
 
         &[class~="bxs-checkbox-checked"]{
             @apply text-main-color;
@@ -94,12 +94,12 @@ $layout-name: 'l-card';
     }
 
     &__name{
-        @apply text-text-color;
+        @apply text-text-color theme-transition;
     }
 
 
     &__button{
-        @apply flex text-gray-600 transition-all duration-200;
+        @apply flex text-gray-600 theme-transition;
 
         & > *{
             @apply pointer-events-none
