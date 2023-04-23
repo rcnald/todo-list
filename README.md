@@ -1,4 +1,6 @@
-<h1 align="center">Project Template</h1>
+<h1 align="center">To-do list</h1>
+
+An aplication thats allows you add, edit, check and delete tasks.
 
 ## ♾️ Requirements
 
