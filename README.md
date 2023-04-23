@@ -1,6 +1,6 @@
 <h1 align="center">To-do list</h1>
 
-An aplication thats allows you add, edit, check and delete tasks.
+<p align="center">An aplication thats allows you add, edit, check and delete tasks.</p>
 
 ## ♾️ Requirements
 
