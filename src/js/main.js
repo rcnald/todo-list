@@ -286,7 +286,12 @@ ItemContainer.addEventListener('click', e => {
             currentEditModal.showModal()
         },
         cancel : function () {
-            currentEditModal.close()
+            currentEditModal.setAttribute('closing', '')
+
+            setTimeout(() => {
+                currentEditModal.removeAttribute('closing')
+                currentEditModal.close()
+            }, 300)
         },
         save : function () {
             tasks[currentItemIndex].name = currentEditInput.value
@@ -304,7 +309,7 @@ ItemContainer.addEventListener('click', e => {
     if(actions[action]){
         actions[action]()
 
-        if(!(actions[action] == actions.edit)) renderTasks()
+        if(!(actions[action] == actions.edit) && !(actions[action] == actions.cancel)) renderTasks()
     }
 })
 

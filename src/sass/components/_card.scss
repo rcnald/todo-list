@@ -5,14 +5,26 @@ $layout-name: 'l-card';
     @apply flex flex-col gap-3 bg-white p-10 rounded-md theme-transition;
 
     &--modal{
-        @apply hidden flex-col gap-3 rounded-md p-5;
+        @apply hidden flex-col gap-3 rounded-md p-5 opacity-0;
 
         &[open]{
-            @apply flex;
+            @apply flex u-modal-animation;
+            
+            &::backdrop{
+                @apply has-faded-in;
+            }
+        }
+
+        &[closing]{
+            @apply flex inset-0 pointer-events-none has-faded-out;
+
+            &::backdrop{
+                @apply  has-faded-out;
+            }
         }
 
         &::backdrop{
-            background: rgba(8, 8, 8, .5);
+            @apply bg-[rgba(8,8,8,.5)] opacity-0;
         }
     }
 

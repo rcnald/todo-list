@@ -1,0 +1,13 @@
+@keyframes has-faded-out  {
+    0%{
+        opacity: 100%;
+    }
+
+    100%{
+        opacity: 0%;
+    }
+}
+
+.has-faded-out{
+    animation: has-faded-out 500ms forwards;
+}
